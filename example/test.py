@@ -25,12 +25,18 @@ for char in str:
         if(char!=" "):
             if len(result)>0:
                 x = dag(dagparams, result)
-                final+=''.join(x[0].path)
+                if(len(x)==0):
+                    print('error:', ' '.join(result))
+                else:
+                    final+=''.join(x[0].path)
                 result=[]
             final+=char
 if len(word)>0:
     result.append(simplify_pinyin(word))
 if len(result)>0:
     x = dag(dagparams, result)
-    final+=''.join(x[0].path)
+    if(len(x)==0):
+        pass
+    else:
+        final+=''.join(x[0].path)
 print(final)
