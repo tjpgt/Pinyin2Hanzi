@@ -5,6 +5,7 @@ import sys
 sys.path.append('..')
 from Pinyin2Hanzi import DefaultDagParams
 from Pinyin2Hanzi import dag
+from Pinyin2Hanzi import simplify_pinyin
 
 dagparams = DefaultDagParams()
 
@@ -19,7 +20,7 @@ for char in str:
         word+=char
     else:
         if len(word)>0:
-            result.append(word)
+            result.append(simplify_pinyin(word))
         word=""
         if(char!=" "):
             if len(result)>0:
@@ -28,7 +29,7 @@ for char in str:
                 result=[]
             final+=char
 if len(word)>0:
-    result.append(word)
+    result.append(simplify_pinyin(word))
 if len(result)>0:
     x = dag(dagparams, result)
     final+=''.join(x[0].path)
