@@ -3,7 +3,6 @@ from __future__ import (print_function, unicode_literals)
 
 import sys
 sys.path.append('..')
-
 from Pinyin2Hanzi import DefaultDagParams
 from Pinyin2Hanzi import dag
 
@@ -28,4 +27,9 @@ for char in str:
                 final+=''.join(x[0].path)
                 result=[]
             final+=char
+if len(word)>0:
+    result.append(word)
+if len(result)>0:
+    x = dag(dagparams, result)
+    final+=''.join(x[0].path)
 print(final)
